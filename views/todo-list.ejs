@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Tasks</title>
+</head>
+<body>
+  <h1>Task List</h1>
+  <ul>
+    <% if (tasks.length > 0) { %>
+      <% tasks.forEach(task => { %>
+        <li>
+          <strong><%= task.task_name %></strong> - <%= task.task_description %>
+        </li>
+      <form action="/tasks/<%= task._id %>/done" method="POST">
+        <button type="submit">Mark as Done</button>
+      </form>
+      <% }) %>
+    <% } else { %>
+      <li>No tasks available</li>
+    <% } %>
+  </ul>
+  <a href="/add-todo">Add Task</a>
+</body>
+</html>
